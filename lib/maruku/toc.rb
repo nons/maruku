@@ -125,6 +125,7 @@ module MaRuKu
       #puts ul.to_html
 
       @section_children.each do |c|
+        c.inspect
         li = Nokogiri::XML::Element.new('li', d)
         if span = c.header_element.render_section_number
           li << span
@@ -144,7 +145,6 @@ module MaRuKu
     def _to_latex
       s = ""
       @section_children.each do |c|
-        c.inspect
         s << "\\noindent"
         if number = c.header_element.section_number
           s << number
