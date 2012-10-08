@@ -112,9 +112,14 @@ module MaRuKu
     def _to_html
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
-      ul['class'] = ul['class'] ? ul['class'] + ' nav-bar' : 'nav_bar'
 
-      p ul.to_html
+      if /.*has-flyout.*"/.match(ul.parent['class'])
+        klass = ' flyout'
+      else
+        klass = ' nav-bar'
+      end
+
+      ul['class'] = ul['class'] ? ul['class'] + klass : klass
 
       @section_children.each do |c|
         li = Nokogiri::XML::Element.new('li', d)
