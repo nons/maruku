@@ -121,7 +121,9 @@ module MaRuKu
         toggle << parent.document.create_element('span')
         parent << toggle
 
-        ul['class'] ? ul['class'] << ' flyout' : parent['class'] = 'flyout'
+        ul['class'] = 'flyout'
+      else
+        ul['class'] = 'nav-bar'
       end
 
       @section_children.each do |c|
