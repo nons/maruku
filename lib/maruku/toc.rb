@@ -113,16 +113,16 @@ module MaRuKu
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
 
-      puts parent.inspect if parent
-      #if /.*has-flyout.*"/.match(ul.parent()['class'])
-        #klass = ' flyout'
-      #else
-        #klass = ' nav-bar'
-      #end
+      # li > ul, needs flyout
+      if parent
+        parent['class'] ? parent['class'] << ' has-flyout' : parent['class'] = 'has-flyout'
 
-      #ul['class'] = ul['class'] ? ul['class'] + klass : klass
+        toggle = parent.document.create_element('a', :href => '#', :class => 'flyout-toggle')
+        toggle << parent.document.create_element('span')
+        parent << toggle
 
-      #puts ul.to_html
+        ul['class'] ? ul['class'] << ' flyout' : parent['class'] = 'flyout'
+      end
 
       @section_children.each do |c|
         li = Nokogiri::XML::Element.new('li', d)
