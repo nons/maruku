@@ -112,6 +112,7 @@ module MaRuKu
     def _to_html
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
+      ul['class'] = ul['class'] ? ul['class'] + ' nav-bar' : 'nav_bar'
       @section_children.each do |c|
         li = Nokogiri::XML::Element.new('li', d)
         if span = c.header_element.render_section_number
