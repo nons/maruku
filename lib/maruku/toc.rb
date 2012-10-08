@@ -121,6 +121,8 @@ module MaRuKu
 
       ul['class'] = ul['class'] ? ul['class'] + klass : klass
 
+      puts ul.to_html
+
       @section_children.each do |c|
         li = Nokogiri::XML::Element.new('li', d)
         if span = c.header_element.render_section_number
