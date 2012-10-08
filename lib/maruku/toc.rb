@@ -113,7 +113,7 @@ module MaRuKu
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
 
-      puts ul.inspect
+      puts parent.inspect if parent
       #if /.*has-flyout.*"/.match(ul.parent()['class'])
         #klass = ' flyout'
       #else
@@ -125,7 +125,6 @@ module MaRuKu
       #puts ul.to_html
 
       @section_children.each do |c|
-        puts c.inspect
         li = Nokogiri::XML::Element.new('li', d)
         if span = c.header_element.render_section_number
           li << span
@@ -136,7 +135,7 @@ module MaRuKu
         a['href'] = "##{c.header_element.attributes[:id]}"
 
         li << a
-        li << c._to_html if c.section_children.size > 0
+        li << c._to_html(li) if c.section_children.size > 0
         ul << li
       end
       ul
