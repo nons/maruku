@@ -113,7 +113,7 @@ module MaRuKu
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
 
-      if /.*has-flyout.*"/.match(ul.parent['class'])
+      if /.*has-flyout.*"/.match(ul.parent()['class'])
         klass = ' flyout'
       else
         klass = ' nav-bar'
