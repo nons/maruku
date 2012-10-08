@@ -123,7 +123,7 @@ module MaRuKu
 
         ul['class'] = 'flyout'
       else
-        ul['class'] = 'nav-bar'
+        ul['class'] = 'nav-bar vertical'
       end
 
       @section_children.each do |c|
