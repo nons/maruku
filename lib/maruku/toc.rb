@@ -125,7 +125,7 @@ module MaRuKu
       #puts ul.to_html
 
       @section_children.each do |c|
-        c.inspect
+        puts c.inspect
         li = Nokogiri::XML::Element.new('li', d)
         if span = c.header_element.render_section_number
           li << span
