@@ -113,15 +113,15 @@ module MaRuKu
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
 
-      if /.*has-flyout.*"/.match(ul.parent['class'])
-        klass = ' flyout'
-      else
-        klass = ' nav-bar'
-      end
+      #if /.*has-flyout.*"/.match(ul.parent['class'])
+        #klass = ' flyout'
+      #else
+        #klass = ' nav-bar'
+      #end
 
-      ul['class'] = ul['class'] ? ul['class'] + klass : klass
+      #ul['class'] = ul['class'] ? ul['class'] + klass : klass
 
-      puts ul.to_html
+      #puts ul.to_html
 
       @section_children.each do |c|
         li = Nokogiri::XML::Element.new('li', d)
