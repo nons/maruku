@@ -109,7 +109,7 @@ module MaRuKu
 
     protected
 
-    def _to_html
+    def _to_html(parent=nil)
       d = Nokogiri::XML::Document.new
       ul = Nokogiri::XML::Element.new('ul', d)
 
@@ -144,6 +144,7 @@ module MaRuKu
     def _to_latex
       s = ""
       @section_children.each do |c|
+        c.inspect
         s << "\\noindent"
         if number = c.header_element.section_number
           s << number
